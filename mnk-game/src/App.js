@@ -4,6 +4,7 @@ import "./App.css";
 import Board from "./components/Board";
 import Login from "./components/Login";
 import Setup from "./components/Setup";
+import Protected from "./components/Protected";
 import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
@@ -11,9 +12,23 @@ function App() {
     <AuthContextProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Board />} />
+          <Route
+            path="/"
+            element={
+              <Protected>
+                <Board />
+              </Protected>
+            }
+          />
           <Route path="/login" element={<Login />} />
-          <Route path="/setup" element={<Setup />} />
+          <Route
+            path="/setup"
+            element={
+              <Protected>
+                <Setup />
+              </Protected>
+            }
+          />
         </Routes>
       </Router>
     </AuthContextProvider>

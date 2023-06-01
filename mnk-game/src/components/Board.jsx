@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom"
 
 const Board = () => {
-  const { googleSignIn, logOut, user } = UserAuth();
+  const { user } = UserAuth();
   const navigate = useNavigate();
 
   const [size, setSize] = useState(10);
