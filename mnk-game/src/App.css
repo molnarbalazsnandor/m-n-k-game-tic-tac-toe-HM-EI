@@ -1,3 +1,8 @@
-.App {
-  text-align: center;
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: radial-gradient(circle, rgba(197, 191, 141, 1) 37%, rgba(185, 116, 52, 1) 100%);
 }

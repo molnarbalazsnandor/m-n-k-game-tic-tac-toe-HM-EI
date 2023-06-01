@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Square from "./Square";
 import "./Board.css";
 import { calculateWinner } from "./../calculateWinner";
+import { Avatar, Button } from '@mui/material/';
+import { UserAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom"
 
 const Board = () => {
+  const { googleSignIn, logOut, user } = UserAuth();
+  const navigate = useNavigate();
+
   const [size, setSize] = useState(10);
   const [target, setTarget] = useState(5);
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(size ** 2).fill(null));
   const [moveHistory, setMoveHistory] = useState([]);
+
+    useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
   function handleSquareClick(i) {
     if (squares[i] || calculateWinner(squares, size, target)) {
@@ -81,10 +94,15 @@ const Board = () => {
       <div className="status">{status}</div>
       <div className="board">{renderBoard()}</div>
       <div className="buttons">
-        <button onClick={handleReset}>Reset</button>
-        <button onClick={handleStepBack} disabled={moveHistory.length === 0}>
+        <Button variant="contained" onClick={handleReset} disabled={moveHistory.length < 1}>Reset</Button >
+        <Button variant="contained" onClick={handleStepBack} disabled={moveHistory.length < 2}>
           Step Back
-        </button>
+        </Button>
+        <Link to="/setup">
+              <Button variant="contained">
+                Go to setup
+              </Button>
+            </Link>
       </div>
     </>
   );

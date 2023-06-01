@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {GoogleButton} from "react-google-button"
 import {UserAuth} from "../context/AuthContext"
-import { Avatar, Button} from '@mui/material/';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const {googleSignIn, logOut, user} = UserAuth();
-  
+  const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
     try{
@@ -15,22 +15,16 @@ function Login() {
     }
   }
 
-  const handleSignOut = async () => {
-    try{
-      await logOut()
-    } catch (error){
-      console.log(error)
+
+  useEffect( () => {
+    if(user){
+      navigate("/setup")
     }
-  }
+  },[user])
+
   return (
     <>
-    {user ? 
-      <>
-        <Avatar src={user.photoURL} alt="Profile Picture" sx={{ width: 200, height: 200, marginBottom: 2 }} />
-        <Button onClick={handleSignOut} variant="contained" >
-                Sign Out</Button>
-      </>:
-        <GoogleButton onClick={()=> {handleGoogleSignIn()}}>Sign in with Google</GoogleButton> }
+      <GoogleButton onClick={()=> {handleGoogleSignIn()}}>Sign in with Google</GoogleButton> 
     </>
   )
 }
