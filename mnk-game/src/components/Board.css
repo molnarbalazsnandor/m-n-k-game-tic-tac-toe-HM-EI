@@ -1,0 +1,33 @@
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 4px;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 20px;
+
+}
+
+
+.cell:hover {
+  background-color: #e0e0e0;
+}
+
+.result {
+  margin-top: 20px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
