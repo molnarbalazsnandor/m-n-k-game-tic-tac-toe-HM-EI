@@ -10,8 +10,10 @@ import { AuthContextProvider } from "./context/AuthContext";
 function App() {
   const [size, setSize] = useState(10);
   const [goal, setGoal] = useState(5);
-  const [player1, setPlayer1] = useState("Player 1");
-  const [player2, setPlayer2] = useState("Player 2");
+  const [player1Name, setPlayer1Name] = useState("Player 1");
+  const [player2Name, setPlayer2Name] = useState("Player 2");
+  const [player1Image, setPlayer1Image] = useState("image1.png");
+  const [player2Image, setPlayer2Image] = useState("image2.png");
 
   return (
     <AuthContextProvider>
@@ -24,8 +26,10 @@ function App() {
                 <Board
                   size={size}
                   goal={goal}
-                  player1={player1}
-                  player2={player2}
+                  player1Name={player1Name}
+                  player2Name={player2Name}
+                  player1Image={player1Image}
+                  player2Image={player2Image}
                 />
               </Protected>
             }
@@ -38,10 +42,14 @@ function App() {
                 <Setup
                   size={size}
                   setSize={setSize}
-                  player1={player1}
-                  setPlayer1={setPlayer1}
-                  player2={player2}
-                  setPlayer2={setPlayer2}
+                  player1Name={player1Name}
+                  setPlayer1Name={setPlayer1Name}
+                  player2Name={player2Name}
+                  setPlayer2Name={setPlayer2Name}
+                  player1Image={player1Image}
+                  setPlayer1Image={setPlayer1Image}
+                  player2Image={player2Image}
+                  setPlayer2Image={setPlayer2Image}
                 />
               </Protected>
             }

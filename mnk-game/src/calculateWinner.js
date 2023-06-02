@@ -1,39 +1,47 @@
-export function calculateWinner(squares, size, target) {
+export function calculateWinner(squares, size, goal) {
   const lines = [];
 
-  // horizontal
+  // Horizontal
   for (let row = 0; row < size; row++) {
-    for (let col = 0; col <= size - target; col++) {
-      lines.push(
-        Array.from({ length: target }, (_, i) => row * size + col + i)
-      );
+    for (let col = 0; col <= size - goal; col++) {
+      const line = [];
+      for (let i = 0; i < goal; i++) {
+        line.push(row * size + col + i);
+      }
+      lines.push(line);
     }
   }
 
-  // vertical
+  // Vertical
   for (let col = 0; col < size; col++) {
-    for (let row = 0; row <= size - target; row++) {
-      lines.push(
-        Array.from({ length: target }, (_, i) => (row + i) * size + col)
-      );
+    for (let row = 0; row <= size - goal; row++) {
+      const line = [];
+      for (let i = 0; i < goal; i++) {
+        line.push((row + i) * size + col);
+      }
+      lines.push(line);
     }
   }
 
-  // diagonal (top-left to bottom-right)
-  for (let row = 0; row <= size - target; row++) {
-    for (let col = 0; col <= size - target; col++) {
-      lines.push(
-        Array.from({ length: target }, (_, i) => (row + i) * size + col + i)
-      );
+  // Diagonal (top-left to bottom-right)
+  for (let row = 0; row <= size - goal; row++) {
+    for (let col = 0; col <= size - goal; col++) {
+      const line = [];
+      for (let i = 0; i < goal; i++) {
+        line.push((row + i) * size + col + i);
+      }
+      lines.push(line);
     }
   }
 
-  // diagonal (top-right to bottom-left)
-  for (let row = 0; row <= size - target; row++) {
-    for (let col = size - 1; col >= target - 1; col--) {
-      lines.push(
-        Array.from({ length: target }, (_, i) => (row + i) * size + col - i)
-      );
+  // Diagonal (top-right to bottom-left)
+  for (let row = 0; row <= size - goal; row++) {
+    for (let col = size - 1; col >= goal - 1; col--) {
+      const line = [];
+      for (let i = 0; i < goal; i++) {
+        line.push((row + i) * size + col - i);
+      }
+      lines.push(line);
     }
   }
 

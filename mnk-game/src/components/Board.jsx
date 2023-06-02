@@ -5,9 +5,8 @@ import { calculateWinner } from "./../calculateWinner";
 import { Avatar, Button, Grid } from '@mui/material/';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom"
 
-const Board = ({ size, goal, player1, player2 }) => {
+const Board = ({ size, goal, player1Name, player2Name, player1Image, player2Image }) => {
   const { user } = UserAuth();
   const navigate = useNavigate();
 
@@ -55,9 +54,9 @@ const Board = ({ size, goal, player1, player2 }) => {
   const winner = calculateWinner(squares, size, goal);
   let status;
   if (winner) {
-    status = "Winner: " + (winner === "X" ? player1 : player2);
+    status = "Winner: " + (winner === "X" ? player1Name : player2Name);
   } else {
-    status = "Next player: " + (xIsNext ? player1 : player2);
+    status = "Next player: " + (xIsNext ? player1Name : player2Name);
   }
 
   function renderBoard() {
@@ -89,18 +88,19 @@ const Board = ({ size, goal, player1, player2 }) => {
 
   return (
     <>
-      <div className="status">{status}</div>
+      <div className="status">{status}
+                <img src={require(`../images/${xIsNext ? player1Image:player2Image}`)} alt={`${player1Image}`} style={{ width: "30px" }} />
+      </div>
       <div className="board">{renderBoard()}</div>
       <div className="buttons">
         <Button variant="contained" onClick={handleReset} disabled={moveHistory.length < 1}>Reset</Button >
         <Button variant="contained" onClick={handleStepBack} disabled={moveHistory.length < 2}>
           Step Back
         </Button>
-        <Link to="/setup">
-          <Button variant="contained">
+          <Button variant="contained"
+            onClick={() => navigate('/setup')}>
             Go to setup
           </Button>
-        </Link>
       </div>
     </>
   );
