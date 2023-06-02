@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Avatar, Button, Slider, Typography, TextField } from '@mui/material/';
-import { UserAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import SwiperComponent from './SwiperComponent';
+import React, { useEffect, useState } from "react";
+import { Avatar, Button, Slider, Typography, TextField } from "@mui/material/";
+import { UserAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import SwiperComponent from "./SwiperComponent";
 
-
-function Setup({ size, setSize, player1Name, setPlayer1Name, player2Name, setPlayer2Name, player1Image, setPlayer1Image, player2Image, setPlayer2Image}) {
-
+function Setup({
+  size,
+  setSize,
+  player1Name,
+  setPlayer1Name,
+  player2Name,
+  setPlayer2Name,
+  player1Image,
+  setPlayer1Image,
+  player2Image,
+  setPlayer2Image,
+}) {
   const { logOut, user } = UserAuth();
   const navigate = useNavigate();
 
@@ -18,13 +27,16 @@ function Setup({ size, setSize, player1Name, setPlayer1Name, player2Name, setPla
     }
   };
 
-
   return (
     <>
       <div>Setup</div>
       {user && (
         <>
-          <Avatar src={user.photoURL} alt="Profile image" sx={{ width: 200, height: 200, marginBottom: 2 }} />
+          <Avatar
+            src={user.photoURL}
+            alt="Profile image"
+            sx={{ width: 200, height: 200, marginBottom: 2 }}
+          />
           <p>Howdy, {user?.displayName}!</p>
           <Button onClick={handleSignOut} variant="contained">
             Sign Out
@@ -42,29 +54,55 @@ function Setup({ size, setSize, player1Name, setPlayer1Name, player2Name, setPla
             marks
             sx={{
               width: 300,
-              color: '#1976d2', 
-              '& .MuiSlider-thumb': {
-                backgroundColor: '#1976d2', 
+              color: "#1976d2",
+              "& .MuiSlider-thumb": {
+                backgroundColor: "#1976d2",
               },
-              '& .MuiSlider-mark': {
-                backgroundColor: '#1976d2', 
+              "& .MuiSlider-mark": {
+                backgroundColor: "#1976d2",
               },
-              '& .MuiSlider-markLabel': {
-                color: '#1976d2', 
+              "& .MuiSlider-markLabel": {
+                color: "#1976d2",
               },
             }}
           />
-          <TextField id="outlined-basic" label="Player 1 name" variant="outlined" 
-          onChange={(e) => setPlayer1Name(e.target.value)}/>
-          <SwiperComponent player1Image={player1Image}
-            setPlayer1Image={setPlayer1Image}/>
-          <TextField id="outlined-basic" label="Player 2 name" variant="outlined" 
-          onChange={(e) => setPlayer2Name(e.target.value)}/>
-            <Button variant="contained"
-              disabled={player1Image === player2Image || player1Name === player2Name}
-              onClick={() => navigate('/')}>
-              Start the game!
-            </Button>
+          <TextField
+            id="outlined-basic"
+            label="Player 1 name"
+            variant="outlined"
+            onChange={(e) => setPlayer1Name(e.target.value)}
+          />
+          <SwiperComponent
+            playerImage={player1Image}
+            setPlayerImage={setPlayer1Image}
+            playerIndex={0}
+          />
+          <Typography id="player-1-image" gutterBottom>
+            Player 1 token
+          </Typography>
+          <TextField
+            id="outlined-basic"
+            label="Player 2 name"
+            variant="outlined"
+            onChange={(e) => setPlayer2Name(e.target.value)}
+          />
+          <SwiperComponent
+            playerImage={player2Image}
+            setPlayerImage={setPlayer2Image}
+            playerIndex={1}
+          />
+          <Typography id="player-2-image" gutterBottom>
+            Player 2 token
+          </Typography>
+          <Button
+            variant="contained"
+            disabled={
+              player1Image === player2Image || player1Name === player2Name
+            }
+            onClick={() => navigate("/")}
+          >
+            Start the game!
+          </Button>
         </>
       )}
     </>

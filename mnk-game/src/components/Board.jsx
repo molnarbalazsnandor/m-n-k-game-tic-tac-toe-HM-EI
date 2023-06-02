@@ -2,11 +2,18 @@ import React, { useState, useEffect } from "react";
 import Square from "./Square";
 import "./Board.css";
 import { calculateWinner } from "./../calculateWinner";
-import { Avatar, Button, Grid } from '@mui/material/';
-import { UserAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Button, Grid, Typography } from "@mui/material/";
+import { UserAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-const Board = ({ size, goal, player1Name, player2Name, player1Image, player2Image }) => {
+const Board = ({
+  size,
+  goal,
+  player1Name,
+  player2Name,
+  player1Image,
+  player2Image,
+}) => {
   const { user } = UserAuth();
   const navigate = useNavigate();
 
@@ -16,7 +23,7 @@ const Board = ({ size, goal, player1Name, player2Name, player1Image, player2Imag
 
   useEffect(() => {
     if (!user) {
-      navigate('/login');
+      navigate("/login");
     }
   }, [user, navigate]);
 
@@ -26,13 +33,14 @@ const Board = ({ size, goal, player1Name, player2Name, player1Image, player2Imag
     }
     const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = "X";
+      nextSquares[i] = player1Image;
     } else {
-      nextSquares[i] = "O";
+      nextSquares[i] = player2Image;
     }
     setSquares(nextSquares);
     setXIsNext(!xIsNext);
     setMoveHistory((prevHistory) => [...prevHistory, nextSquares]);
+    console.log(squares);
   }
 
   function handleReset() {
@@ -54,7 +62,7 @@ const Board = ({ size, goal, player1Name, player2Name, player1Image, player2Imag
   const winner = calculateWinner(squares, size, goal);
   let status;
   if (winner) {
-    status = "Winner: " + (winner === "X" ? player1Name : player2Name);
+    status = "Winner: " + (winner === player1Image ? player2Name : player1Name);
   } else {
     status = "Next player: " + (xIsNext ? player1Name : player2Name);
   }
@@ -88,19 +96,39 @@ const Board = ({ size, goal, player1Name, player2Name, player1Image, player2Imag
 
   return (
     <>
-      <div className="status">{status}
-                <img src={require(`../images/${xIsNext ? player1Image:player2Image}`)} alt={`${player1Image}`} style={{ width: "30px" }} />
+      <div className="status">
+        <Typography id="board-status" gutterBottom>
+          {winner
+            ? "Winner: " + (winner === player2Image ? player2Name : player1Name)
+            : "Next player: " + (xIsNext ? player1Name : player2Name)}
+        </Typography>
+        <img
+          src={require(`../images/${
+            winner || (xIsNext ? player1Image : player2Image)
+          }`)}
+          alt={`${player1Image}`}
+          style={{ width: "30px" }}
+        />
       </div>
       <div className="board">{renderBoard()}</div>
       <div className="buttons">
-        <Button variant="contained" onClick={handleReset} disabled={moveHistory.length < 1}>Reset</Button >
-        <Button variant="contained" onClick={handleStepBack} disabled={moveHistory.length < 2}>
+        <Button
+          variant="contained"
+          onClick={handleReset}
+          disabled={moveHistory.length < 1}
+        >
+          Reset
+        </Button>
+        <Button
+          variant="contained"
+          onClick={handleStepBack}
+          disabled={moveHistory.length < 2}
+        >
           Step Back
         </Button>
-          <Button variant="contained"
-            onClick={() => navigate('/setup')}>
-            Go to setup
-          </Button>
+        <Button variant="contained" onClick={() => navigate("/setup")}>
+          Go to setup
+        </Button>
       </div>
     </>
   );
