@@ -2,29 +2,27 @@ import React, { useState, useEffect } from "react";
 import Square from "./Square";
 import "./Board.css";
 import { calculateWinner } from "./../calculateWinner";
-import { Avatar, Button } from '@mui/material/';
+import { Avatar, Button, Grid } from '@mui/material/';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom"
 
-const Board = () => {
+const Board = ({ size, goal, player1, player2 }) => {
   const { user } = UserAuth();
   const navigate = useNavigate();
 
-  const [size, setSize] = useState(10);
-  const [target, setTarget] = useState(5);
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(size ** 2).fill(null));
   const [moveHistory, setMoveHistory] = useState([]);
 
-    useEffect(() => {
+  useEffect(() => {
     if (!user) {
       navigate('/login');
     }
   }, [user, navigate]);
 
   function handleSquareClick(i) {
-    if (squares[i] || calculateWinner(squares, size, target)) {
+    if (squares[i] || calculateWinner(squares, size, goal)) {
       return;
     }
     const nextSquares = squares.slice();
@@ -54,12 +52,12 @@ const Board = () => {
     }
   }
 
-  const winner = calculateWinner(squares, size, target);
+  const winner = calculateWinner(squares, size, goal);
   let status;
   if (winner) {
-    status = "Winner: " + winner;
+    status = "Winner: " + (winner === "X" ? player1 : player2);
   } else {
-    status = "Next player: " + (xIsNext ? "X" : "O");
+    status = "Next player: " + (xIsNext ? player1 : player2);
   }
 
   function renderBoard() {
@@ -80,9 +78,9 @@ const Board = () => {
       }
 
       board.push(
-        <div key={row} className="board-row">
+        <Grid key={row} container spacing={1} className="board-row">
           {squaresRow}
-        </div>
+        </Grid>
       );
     }
 
@@ -99,10 +97,10 @@ const Board = () => {
           Step Back
         </Button>
         <Link to="/setup">
-              <Button variant="contained">
-                Go to setup
-              </Button>
-            </Link>
+          <Button variant="contained">
+            Go to setup
+          </Button>
+        </Link>
       </div>
     </>
   );

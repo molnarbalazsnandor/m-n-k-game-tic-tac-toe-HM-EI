@@ -1,11 +1,19 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Square.css";
+import { Button, Grid } from "@mui/material/";
 
-function Square({value, onSquareClick}) {
-
+function Square({ value, onSquareClick }) {
   return (
-    <button className="square" onClick={onSquareClick}>{value}</button>
-  )
+    <Grid item>
+      <Button
+        className="square"
+        onClick={onSquareClick}
+        variant="contained"
+      >
+        {value}
+      </Button>
+    </Grid>
+  );
 }
 
-export default Square
+export default Square;
