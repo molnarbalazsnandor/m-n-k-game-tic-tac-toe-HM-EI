@@ -11,8 +11,8 @@ const Board = ({
   goal,
   player1Name,
   player2Name,
-  player1Image,
-  player2Image,
+  player1Token,
+  player2Token,
 }) => {
   const { user } = UserAuth();
   const navigate = useNavigate();
@@ -33,9 +33,9 @@ const Board = ({
     }
     const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = player1Image;
+      nextSquares[i] = player1Token;
     } else {
-      nextSquares[i] = player2Image;
+      nextSquares[i] = player2Token;
     }
     setSquares(nextSquares);
     setXIsNext(!xIsNext);
@@ -62,7 +62,7 @@ const Board = ({
   const winner = calculateWinner(squares, size, goal);
   let status;
   if (winner) {
-    status = "Winner: " + (winner === player1Image ? player2Name : player1Name);
+    status = "Winner: " + (winner === player1Token ? player2Name : player1Name);
   } else {
     status = "Next player: " + (xIsNext ? player1Name : player2Name);
   }
@@ -99,14 +99,14 @@ const Board = ({
       <div className="status">
         <Typography id="board-status" gutterBottom>
           {winner
-            ? "Winner: " + (winner === player2Image ? player2Name : player1Name)
+            ? "Winner: " + (winner === player1Token ? player1Name : player2Name)
             : "Next player: " + (xIsNext ? player1Name : player2Name)}
         </Typography>
         <img
-          src={require(`../images/${
-            winner || (xIsNext ? player1Image : player2Image)
+          src={require(`../images/tokens/${
+            winner || (xIsNext ? player1Token : player2Token)
           }`)}
-          alt={`${player1Image}`}
+          alt={`${player1Token}`}
           style={{ width: "30px" }}
         />
       </div>

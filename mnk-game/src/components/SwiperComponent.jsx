@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-function SwiperComponent({ playerImage, setPlayerImage, playerIndex }) {
+function SwiperComponent({ playerToken, setplayerToken, playerIndex }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
@@ -18,6 +18,8 @@ function SwiperComponent({ playerImage, setPlayerImage, playerIndex }) {
     "image6.png",
     "image7.png",
     "image8.png",
+    "image9.png",
+    "image10.png",
   ];
 
   return (
@@ -28,7 +30,7 @@ function SwiperComponent({ playerImage, setPlayerImage, playerIndex }) {
         slidesPerView={1}
         navigation
         initialSlide={playerIndex}
-        onSlideChange={(swiper) => setPlayerImage(images[swiper.activeIndex])}
+        onSlideChange={(swiper) => setplayerToken(images[swiper.activeIndex])}
         style={{ width: "200px" }}
       >
         {images.map((image, index) => (
@@ -41,7 +43,7 @@ function SwiperComponent({ playerImage, setPlayerImage, playerIndex }) {
             }}
           >
             <img
-              src={require(`../images/${image}`)}
+              src={require(`../images/tokens/${image}`)}
               alt={`Image ${index + 1}`}
               style={{ width: "50px" }}
             />

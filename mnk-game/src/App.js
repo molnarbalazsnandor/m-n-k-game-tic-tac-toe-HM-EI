@@ -12,8 +12,8 @@ function App() {
   const [goal, setGoal] = useState(5);
   const [player1Name, setPlayer1Name] = useState("Player 1");
   const [player2Name, setPlayer2Name] = useState("Player 2");
-  const [player1Image, setPlayer1Image] = useState("image1.png");
-  const [player2Image, setPlayer2Image] = useState("image2.png");
+  const [player1Token, setplayer1Token] = useState("image1.png");
+  const [player2Token, setplayer2Token] = useState("image2.png");
 
   return (
     <AuthContextProvider>
@@ -28,8 +28,8 @@ function App() {
                   goal={goal}
                   player1Name={player1Name}
                   player2Name={player2Name}
-                  player1Image={player1Image}
-                  player2Image={player2Image}
+                  player1Token={player1Token}
+                  player2Token={player2Token}
                 />
               </Protected>
             }
@@ -46,10 +46,10 @@ function App() {
                   setPlayer1Name={setPlayer1Name}
                   player2Name={player2Name}
                   setPlayer2Name={setPlayer2Name}
-                  player1Image={player1Image}
-                  setPlayer1Image={setPlayer1Image}
-                  player2Image={player2Image}
-                  setPlayer2Image={setPlayer2Image}
+                  player1Token={player1Token}
+                  setplayer1Token={setplayer1Token}
+                  player2Token={player2Token}
+                  setplayer2Token={setplayer2Token}
                 />
               </Protected>
             }

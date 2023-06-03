@@ -8,7 +8,7 @@ function Square({ value, onSquareClick }) {
       <Button className="square" onClick={onSquareClick} variant="contained">
         {value && (
           <img
-            src={require(`../images/${value}`)}
+            src={require(`../images/tokens/${value}`)}
             alt={`Image ${value}`}
             style={{ width: "30px" }}
           />
