@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Square from "./Square";
-import "./Board.css";
 import { calculateWinner } from "./../calculateWinner";
-import { Button, Grid, Typography } from "@mui/material/";
+import {
+  Button,
+  Grid,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+} from "@mui/material/";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import "./Board.css";
 
 const Board = ({
   size,
@@ -95,26 +102,51 @@ const Board = ({
   }
 
   return (
-    <>
-      <div className="status">
-        <Typography id="board-status" gutterBottom>
+    <Card className="board-card">
+      <div className="nail nail-top-left"></div>
+      <div className="nail nail-top-right"></div>
+      <div className="nail nail-bottom-left"></div>
+      <div className="nail nail-bottom-right"></div>
+      <CardContent className="status">
+        <Typography className="board-status" gutterBottom>
           {winner
             ? "Winner: " + (winner === player1Token ? player1Name : player2Name)
             : "Next player: " + (xIsNext ? player1Name : player2Name)}
         </Typography>
-        <img
+        <CardMedia
+          component="img"
+          className="red-ribbon"
           src={require(`../images/tokens/${
             winner || (xIsNext ? player1Token : player2Token)
           }`)}
           alt={`${player1Token}`}
           style={{ width: "30px" }}
         />
-      </div>
-      <div className="board">{renderBoard()}</div>
-      <div className="buttons">
+        <CardMedia
+          component="img"
+          className="red-ribbon"
+          image={require("../images/redribbon1.png")}
+          alt="Red ribbon"
+        />
+      </CardContent>
+      <CardContent
+        className="board"
+        style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(${size}, 30px)`,
+          gridTemplateRows: `repeat(${size}, 30px)`,
+          gap: "0",
+          width: `${size * 30}px`,
+          height: `${size * 30}px`,
+        }}
+      >
+        {renderBoard()}
+      </CardContent>
+      <CardContent className="buttons">
         <Button
           variant="contained"
           onClick={handleReset}
+          className="button"
           disabled={moveHistory.length < 1}
         >
           Reset
@@ -122,15 +154,20 @@ const Board = ({
         <Button
           variant="contained"
           onClick={handleStepBack}
+          className="button"
           disabled={moveHistory.length < 2}
         >
           Step Back
         </Button>
-        <Button variant="contained" onClick={() => navigate("/setup")}>
+        <Button
+          variant="contained"
+          className="button"
+          onClick={() => navigate("/setup")}
+        >
           Go to setup
         </Button>
-      </div>
-    </>
+      </CardContent>
+    </Card>
   );
 };
 

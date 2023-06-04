@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-import "./Square.css";
 import { Button, Grid } from "@mui/material/";
 
 function Square({ value, onSquareClick }) {
   return (
-    <Grid item>
-      <Button className="square" onClick={onSquareClick} variant="contained">
-        {value && (
-          <img
-            src={require(`../images/tokens/${value}`)}
-            alt={`Image ${value}`}
-            style={{ width: "30px" }}
-          />
-        )}
-      </Button>
+    <Grid item className="grid-item" onClick={onSquareClick}>
+      {value && (
+        <img
+          src={require(`../images/tokens/${value}`)}
+          alt={`Image ${value}`}
+          className="square-token"
+        />
+      )}
     </Grid>
   );
 }

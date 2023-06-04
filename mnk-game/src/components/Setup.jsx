@@ -99,7 +99,7 @@ function Setup({
           value={size}
           onChange={(e) => setSize(e.target.value)}
           min={5}
-          max={40}
+          max={20}
           step={1}
           marks
         />
