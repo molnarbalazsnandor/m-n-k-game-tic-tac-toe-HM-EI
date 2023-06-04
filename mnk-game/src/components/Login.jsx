@@ -35,6 +35,10 @@ const Login = () => {
 
   return (
     <Card className="login-card">
+      <div className="nail nail-top-left"></div>
+      <div className="nail nail-top-right"></div>
+      <div className="nail nail-bottom-left"></div>
+      <div className="nail nail-bottom-right"></div>
       <CardContent className="card-content">
         <Typography
           variant="h4"
@@ -75,7 +79,7 @@ const Login = () => {
           className="info-text"
           style={{ fontFamily: "Fredericka the Great" }}
         >
-          Hold on there Partner! <br></br>You must introduce yourself before you
+          Hold up there Partner! <br></br>You must introduce yourself before you
           can enter the Saloon!
         </Typography>
         <Button

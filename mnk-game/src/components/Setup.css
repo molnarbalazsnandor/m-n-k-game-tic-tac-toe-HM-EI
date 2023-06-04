@@ -6,12 +6,21 @@
   font-family: "Fredericka the Great";
   src: url("../fonts/fredericka.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Yellowtail";
+  src: url("../fonts/yellowtail.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Special Elite";
+  src: url("../fonts/SpecialElite.ttf") format("truetype");
+}
 .setup-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: auto;
+  max-height: 95vh;
   max-width: 600px;
   min-width: 400px;
   position: relative;
@@ -19,7 +28,31 @@
   background-size: cover;
   color: #3f201a;
 }
-.setup-card .user-card-content {
+.setup-card .nail {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(160deg, rgb(172, 176, 209) 0%, rgb(54, 75, 100) 88%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+}
+.setup-card .nail-top-left {
+  top: 5px;
+  left: 5px;
+}
+.setup-card .nail-top-right {
+  top: 5px;
+  right: 5px;
+}
+.setup-card .nail-bottom-left {
+  bottom: 5px;
+  left: 5px;
+}
+.setup-card .nail-bottom-right {
+  bottom: 5px;
+  right: 5px;
+}
+.setup-card .setup-card-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,24 +60,16 @@
   height: auto;
   width: 100%;
   position: relative;
-  min-height: 250px;
 }
-.setup-card .user-card-content .setup-text,
-.setup-card .user-card-content .howdy-text {
+.setup-card .setup-card-header .setup-text {
   font-family: "Reward Font" !important;
   font-size: 32px;
   text-align: center;
   z-index: 3 !important;
-}
-.setup-card .user-card-content .setup-text {
   position: absolute;
   top: 15px;
 }
-.setup-card .user-card-content .howdy-text {
-  position: absolute;
-  top: 70%;
-}
-.setup-card .user-card-content .red-ribbon {
+.setup-card .setup-card-header .red-ribbon {
   height: auto;
   width: 60%;
   position: absolute;
@@ -53,27 +78,163 @@
   transform: translate(-50%, -50%);
   z-index: 0;
 }
-.setup-card .user-card-content .google-avatar {
-  height: 80px;
-  width: auto;
+.setup-card .user-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  height: auto;
+  width: 100%;
+  position: relative;
+  height: 20vh;
+  min-height: 200px;
+  margin-top: 20px;
+}
+.setup-card .user-card-content .user-picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 40px;
+  position: relative;
+  margin-bottom: 1vh;
+}
+.setup-card .user-card-content .user-picture .google-avatar {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 25%;
+  min-height: 7vh;
+  width: auto;
   z-index: 2;
 }
-.setup-card .user-card-content .wanted-icon {
-  height: 150px;
+.setup-card .user-card-content .user-picture .wanted-icon {
+  min-height: 12vh;
   width: 150px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 1;
 }
-.setup-card .user-card-content .sign-out-button {
+.setup-card .user-card-content .user-admin {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+.setup-card .user-card-content .user-admin .email-text {
+  display: flex;
+  font-family: "Fredericka the Great" !important;
+  font-weight: bold !important;
+  font-size: 20px;
+  text-align: center;
+  z-index: 3 !important;
+  margin: 10px;
+}
+.setup-card .user-card-content .user-admin .sign-out-button {
+  display: flex;
+  margin: 10px;
+}
+.setup-card .user-card-content .howdy-text {
+  font-family: "Reward Font" !important;
+  font-size: 32px;
+  text-align: center;
+  z-index: 3 !important;
   position: absolute;
-  top: 100%;
+  top: 80%;
+}
+.setup-card .decorative-line-one {
+  width: 80%;
+}
+.setup-card .setup-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  height: auto;
+  width: 100%;
+  position: relative;
+  min-height: 20vh;
+}
+.setup-card .setup-card-content .board-size-label {
+  font-family: "Fredericka the Great";
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+.setup-card .setup-card-content .board-size {
+  width: 70% !important;
+}
+.setup-card .setup-card-content .MuiSlider-root {
+  width: 300px;
+  color: rgb(126, 78, 33);
+}
+.setup-card .setup-card-content .MuiSlider-root .MuiSlider-thumb {
+  background-color: rgb(103, 106, 124);
+}
+.setup-card .setup-card-content .MuiSlider-root .MuiSlider-mark,
+.setup-card .setup-card-content .MuiSlider-root .MuiSlider-markLabel {
+  background-color: rgb(172, 176, 209);
+}
+.setup-card .setup-card-content .MuiSlider-root .MuiSlider-markLabel {
+  color: rgb(172, 176, 209);
+}
+.setup-card .setup-card-content .MuiTextField-root {
+  display: block;
+  margin-bottom: 16px;
+}
+.setup-card .setup-card-content .player-settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  position: relative;
+  height: 25vh;
+  min-height: 150px;
+}
+.setup-card .setup-card-content .player-settings .player-one-settings,
+.setup-card .setup-card-content .player-settings .player-two-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.setup-card .setup-card-content .player-settings .player-1-token,
+.setup-card .setup-card-content .player-settings .player-2-token {
+  font-family: "Fredericka the Great";
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.setup-card .setup-card-content .player-settings .player-one-name .MuiOutlinedInput-root fieldset,
+.setup-card .setup-card-content .player-settings .player-two-name .MuiOutlinedInput-root fieldset {
+  border-color: rgb(103, 106, 124);
+  border-style: dashed;
+}
+.setup-card .setup-card-content .player-settings .player-one-name .MuiOutlinedInput-root:hover fieldset,
+.setup-card .setup-card-content .player-settings .player-two-name .MuiOutlinedInput-root:hover fieldset {
+  border-color: rgb(103, 106, 124);
+}
+.setup-card .setup-card-content .player-settings .player-one-name .MuiOutlinedInput-root.Mui-focused fieldset,
+.setup-card .setup-card-content .player-settings .player-two-name .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #3d312c;
+}
+.setup-card .setup-card-content .player-settings .player-one-name .Mui-focused,
+.setup-card .setup-card-content .player-settings .player-two-name .Mui-focused {
+  color: #3f3636;
+}
+.setup-card .setup-card-content .player-settings .player-one-name .MuiInputLabel-root,
+.setup-card .setup-card-content .player-settings .player-two-name .MuiInputLabel-root {
+  font-family: "Fredericka the Great";
+  font-weight: bold;
+}
+.setup-card .setup-card-content .player-settings .player-one-name .MuiInputBase-input,
+.setup-card .setup-card-content .player-settings .player-two-name .MuiInputBase-input {
+  font-family: "Special Elite";
+}
+.setup-card .setup-card-content .player-settings .player-typography {
+  font-family: "Fredericka the Great";
+  font-weight: bold;
 }
 
 button {
@@ -91,37 +252,13 @@ button {
 button:hover {
   background-color: #2e1a10 !important;
 }
-
-.MuiSlider-root {
-  width: 300px;
-  margin-bottom: 16px;
-  color: #ce9374;
-}
-.MuiSlider-root .MuiSlider-thumb {
-  background-color: linear-gradient(90deg, #89674d 0%, #fcd5be 25%, #ce9374 50%, #fcd5be 75%, #89674d 100%);
-}
-.MuiSlider-root .MuiSlider-mark,
-.MuiSlider-root .MuiSlider-markLabel {
-  background-color: #1976d2;
-}
-.MuiSlider-root .MuiSlider-markLabel {
-  color: linear-gradient(90deg, #89674d 0%, #fcd5be 25%, #ce9374 50%, #fcd5be 75%, #89674d 100%);
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transition: opacity 0.3s ease, cursor 0.3s ease;
 }
 
-.MuiTextField-root {
-  display: block;
-  margin-bottom: 16px;
-}
-
-#player-1-token,
-#player-2-token {
-  font-family: "Fredericka the Great";
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.board-size-label {
-  color: linear-gradient(90deg, #89674d 0%, #fcd5be 25%, #ce9374 50%, #fcd5be 75%, #89674d 100%);
+.swiper-button-prev,
+.swiper-button-next {
+  color: rgb(103, 106, 124);
 }/*# sourceMappingURL=Setup.css.map */

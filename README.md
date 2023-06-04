@@ -1,3 +1,5 @@
+A projekt a HM EI Zrt. Frontend fejlesztői pozíciójára való pályázatként készült.
+
 Telepítendő csomagok:
 
 - react-dom

@@ -36,10 +36,14 @@ function Setup({
       console.log(error);
     }
   };
-
+  <div></div>;
   return (
     <Card className="setup-card">
-      <CardContent className="user-card-content">
+      <div className="nail nail-top-left"></div>
+      <div className="nail nail-top-right"></div>
+      <div className="nail nail-bottom-left"></div>
+      <div className="nail nail-bottom-right"></div>
+      <CardContent className="setup-card-header">
         <Typography variant="h4" className="setup-text">
           Setup
         </Typography>
@@ -49,34 +53,49 @@ function Setup({
           image={require("../images/redribbon1.png")}
           alt="Red ribbon"
         />
-        <Avatar
-          className="google-avatar"
-          src={user.photoURL}
-          alt="Profile image"
-        />
-        <CardMedia
-          component="img"
-          className="wanted-icon"
-          image={require("../images/wanted.png")}
-          alt="Wanted"
-        />
+      </CardContent>
+      <CardContent className="user-card-content">
+        <div className="user-picture">
+          <Avatar
+            className="google-avatar"
+            src={user.photoURL}
+            alt="Profile image"
+          />
+          <CardMedia
+            component="img"
+            className="wanted-icon"
+            image={require("../images/wanted.png")}
+            alt="Wanted"
+          />
+        </div>
+        <div className="user-admin">
+          <Typography variant="h2" className="email-text">
+            {user?.email}
+          </Typography>
+          <Button
+            onClick={handleSignOut}
+            variant="contained"
+            className="sign-out-button"
+          >
+            Sign Out
+          </Button>
+        </div>
         <Typography variant="h4" className="howdy-text">
           Howdy, {user?.displayName}!
         </Typography>
-        <Button
-          onClick={handleSignOut}
-          variant="contained"
-          className="sign-out-button"
-        >
-          Sign Out
-        </Button>
       </CardContent>
+      <CardMedia
+        component="img"
+        className="decorative-line-one"
+        image={require("../images/decorative-line1.png")}
+        alt="Decorative line 1"
+      />
       <CardContent className="setup-card-content">
-        <Typography id="board-size-label" gutterBottom>
+        <Typography className="board-size-label" gutterBottom>
           Board Size: {size}x{size}
         </Typography>
         <Slider
-          className="board-size-label"
+          className="board-size"
           value={size}
           onChange={(e) => setSize(e.target.value)}
           min={5}
@@ -84,32 +103,50 @@ function Setup({
           step={1}
           marks
         />
-        <TextField
-          label="Player 1 name"
-          variant="outlined"
-          onChange={(e) => setPlayer1Name(e.target.value)}
-        />
-        <SwiperComponent
-          playerToken={player1Token}
-          setplayerToken={setplayer1Token}
-          playerIndex={0}
-        />
-        <Typography id="player-1-token" gutterBottom>
-          Player 1 token
-        </Typography>
-        <TextField
-          label="Player 2 name"
-          variant="outlined"
-          onChange={(e) => setPlayer2Name(e.target.value)}
-        />
-        <SwiperComponent
-          playerToken={player2Token}
-          setplayerToken={setplayer2Token}
-          playerIndex={1}
-        />
-        <Typography id="player-2-token" gutterBottom>
-          Player 2 token
-        </Typography>
+        <div className="player-settings">
+          <div className="player-one-settings">
+            <TextField
+              label="Player 1 name"
+              className="player-one-name"
+              variant="outlined"
+              onChange={(e) => setPlayer1Name(e.target.value)}
+            />
+            <SwiperComponent
+              className="player-one-token"
+              playerToken={player1Token}
+              setplayerToken={setplayer1Token}
+              playerIndex={0}
+            />
+            <Typography
+              id="player-1-token"
+              gutterBottom
+              className="player-typography"
+            >
+              Player 1 token
+            </Typography>
+          </div>
+          <div className="player-two-settings">
+            <TextField
+              label="Player 2 name"
+              className="player-two-name"
+              variant="outlined"
+              onChange={(e) => setPlayer2Name(e.target.value)}
+            />
+            <SwiperComponent
+              className="player-two-token"
+              playerToken={player2Token}
+              setplayerToken={setplayer2Token}
+              playerIndex={1}
+            />
+            <Typography
+              id="player-2-token"
+              gutterBottom
+              className="player-typography"
+            >
+              Player 2 token
+            </Typography>
+          </div>
+        </div>
         <Button
           variant="contained"
           disabled={

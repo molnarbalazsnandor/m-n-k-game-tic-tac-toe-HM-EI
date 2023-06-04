@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: center;
   height: auto;
+  min-height: 20vh;
   background-image: url("../images/sepia.jpg");
   background-size: cover;
   background-position: center;
@@ -19,7 +20,30 @@
   position: relative;
   z-index: 0;
   min-width: 600px;
-  height: auto;
+}
+.login-card .nail {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(160deg, rgb(172, 176, 209) 0%, rgb(54, 75, 100) 88%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+}
+.login-card .nail-top-left {
+  top: 5px;
+  left: 5px;
+}
+.login-card .nail-top-right {
+  top: 5px;
+  right: 5px;
+}
+.login-card .nail-bottom-left {
+  bottom: 5px;
+  left: 5px;
+}
+.login-card .nail-bottom-right {
+  bottom: 5px;
+  right: 5px;
 }
 .login-card .card-content {
   position: relative;
