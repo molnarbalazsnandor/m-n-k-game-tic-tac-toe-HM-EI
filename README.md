@@ -20,7 +20,7 @@ Telepítendő csomagok:
 - @mui/material @emotion/react @emotion/styled
 - firebase
 
-A fenti URL védett, azért az alkalmazás automatikusan a http://localhost:3000/login route-ra navigál. A továbblépés Google alapú bejelentkezéshez kötött, amit a firebase autentikációs rendszere biztosít. A Google egy gyors, biztonságos és széleskörűen elterjedt autentikációs opció, ezért esett rá a választásom.
+A fenti URL védett, azért az alkalmazás automatikusan a http://localhost:3000/login route-ra navigál. A továbblépés Google alapú bejelentkezéshez kötött, amit a firebase autentikációs rendszere biztosít. A Google egy gyors, biztonságos és széleskörűen elterjedt autentikációs opció, ezért esett rá a választásom. Az autentikációs adatokat egy Context alapú komponensben tároltam, és utaztattam a komponensek között.
 
 Bejelentkezés után az app automatikusan továbbirányyít a http://localhost:3000/setup route-ra, ahol ekkor már megjelennek a felhasználó alapvető adatai (itt ki is jelentkezhet), és a játék beállításai. Beállíthatóak a a pálya mérete, a játékosok nevei, továbbá a jelölő ikonjaik. Ugyan a győzelmi limit és a játékosok számának módosítása is kezdetben fent forgott, ezeket később elvetettem, mivel véleményem szerint a játék alapkoncepcióját túlzottan megtörnék.
 

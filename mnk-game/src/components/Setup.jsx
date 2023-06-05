@@ -44,9 +44,21 @@ function Setup({
       <div className="nail nail-bottom-left"></div>
       <div className="nail nail-bottom-right"></div>
       <CardContent className="setup-card-header">
+        <CardMedia
+          component="img"
+          className="setting"
+          image={require("../images/setting.png")}
+          alt="Setting"
+        />
         <Typography variant="h4" className="setup-text">
           Setup
         </Typography>
+        <CardMedia
+          component="img"
+          className="setting"
+          image={require("../images/setting.png")}
+          alt="Setting"
+        />
         <CardMedia
           component="img"
           className="red-ribbon"
@@ -99,7 +111,7 @@ function Setup({
           value={size}
           onChange={(e) => setSize(e.target.value)}
           min={5}
-          max={20}
+          max={15}
           step={1}
           marks
         />
@@ -149,6 +161,7 @@ function Setup({
         </div>
         <Button
           variant="contained"
+          className="start-button"
           disabled={
             player1Token === player2Token || player1Name === player2Name
           }

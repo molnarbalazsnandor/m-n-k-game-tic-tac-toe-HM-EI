@@ -17,9 +17,13 @@ const Board = ({
   size,
   goal,
   player1Name,
+  setPlayer1Name,
   player2Name,
+  setPlayer2Name,
   player1Token,
+  setplayer1Token,
   player2Token,
+  setplayer2Token,
 }) => {
   const { user } = UserAuth();
   const navigate = useNavigate();
@@ -54,6 +58,10 @@ const Board = ({
     setSquares(Array(size ** 2).fill(null));
     setMoveHistory([]);
     setXIsNext(true);
+    setPlayer1Name("Player 1");
+    setPlayer2Name("Player 2");
+    setplayer1Token("image1.png");
+    setplayer2Token("image2.png");
   }
 
   function handleStepBack() {
@@ -107,65 +115,91 @@ const Board = ({
       <div className="nail nail-top-right"></div>
       <div className="nail nail-bottom-left"></div>
       <div className="nail nail-bottom-right"></div>
-      <CardContent className="status">
-        <Typography className="board-status" gutterBottom>
-          {winner
-            ? "Winner: " + (winner === player1Token ? player1Name : player2Name)
-            : "Next player: " + (xIsNext ? player1Name : player2Name)}
-        </Typography>
-        <CardMedia
-          component="img"
-          className="red-ribbon"
-          src={require(`../images/tokens/${
-            winner || (xIsNext ? player1Token : player2Token)
-          }`)}
-          alt={`${player1Token}`}
-          style={{ width: "30px" }}
-        />
-        <CardMedia
-          component="img"
-          className="red-ribbon"
-          image={require("../images/redribbon1.png")}
-          alt="Red ribbon"
-        />
-      </CardContent>
       <CardContent
         className="board"
         style={{
           display: "grid",
-          gridTemplateColumns: `repeat(${size}, 30px)`,
-          gridTemplateRows: `repeat(${size}, 30px)`,
+          gridTemplateColumns: `repeat(${size}, 2.5vw)`,
+          gridTemplateRows: `repeat(${size}, 2.5vw)`,
           gap: "0",
-          width: `${size * 30}px`,
-          height: `${size * 30}px`,
+          width: `${size * 2.5}vw`,
+          height: `${size * 2.5}vw`,
         }}
       >
         {renderBoard()}
       </CardContent>
-      <CardContent className="buttons">
-        <Button
-          variant="contained"
-          onClick={handleReset}
-          className="button"
-          disabled={moveHistory.length < 1}
-        >
-          Reset
-        </Button>
-        <Button
-          variant="contained"
-          onClick={handleStepBack}
-          className="button"
-          disabled={moveHistory.length < 2}
-        >
-          Step Back
-        </Button>
-        <Button
-          variant="contained"
-          className="button"
-          onClick={() => navigate("/setup")}
-        >
-          Go to setup
-        </Button>
+      <CardContent className="game-properties">
+        <CardContent className="status-header">
+          <CardMedia
+            component="img"
+            className="status-token"
+            src={require(`../images/tokens/${
+              winner || (xIsNext ? player1Token : player2Token)
+            }`)}
+            alt={`${player1Token}`}
+          />
+          <Typography
+            className={`board-status ${winner ? "winner" : ""}`}
+            gutterBottom
+          >
+            {winner
+              ? "Winner: " +
+                (winner === player1Token ? player1Name : player2Name) +
+                " !"
+              : "Next player: " + (xIsNext ? player1Name : player2Name)}
+          </Typography>
+          <CardMedia
+            component="img"
+            className="status-token"
+            src={require(`../images/tokens/${
+              winner || (xIsNext ? player1Token : player2Token)
+            }`)}
+            alt={`${player1Token}`}
+          />
+          <CardMedia
+            component="img"
+            className="red-ribbon"
+            image={require("../images/redribbon1.png")}
+            alt="Red ribbon"
+          />
+        </CardContent>
+        <CardContent className="buttons">
+          <CardMedia
+            component="img"
+            className="decorative-line-two top"
+            image={require("../images/decorative-line2.png")}
+            alt="Decorative line 1"
+          />
+          <Button
+            variant="contained"
+            onClick={handleReset}
+            className="button"
+            disabled={moveHistory.length < 1}
+          >
+            Reset
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleStepBack}
+            className="button"
+            disabled={moveHistory.length < 2}
+          >
+            Step Back
+          </Button>
+          <Button
+            variant="contained"
+            className="button"
+            onClick={() => navigate("/setup")}
+          >
+            Go to setup
+          </Button>
+          <CardMedia
+            component="img"
+            className="decorative-line-two bottom"
+            image={require("../images/decorative-line2.png")}
+            alt="Decorative line 1"
+          />
+        </CardContent>
       </CardContent>
     </Card>
   );

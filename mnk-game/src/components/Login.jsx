@@ -40,19 +40,15 @@ const Login = () => {
       <div className="nail nail-bottom-left"></div>
       <div className="nail nail-bottom-right"></div>
       <CardContent className="card-content">
-        <Typography
-          variant="h4"
-          className="welcome-text"
-          style={{ fontFamily: "Reward Font" }}
-        >
-          Welcome to the MNK Saloon!
-        </Typography>
         <CardMedia
           component="img"
           className="tic-tac-toe-icon left"
           image={require("../images/tic-tac-toe.png")}
           alt="tic-tac-toe"
         />
+        <Typography variant="h4" className="welcome-text">
+          Welcome to the MNK Saloon!
+        </Typography>
         <CardMedia
           component="img"
           className="tic-tac-toe-icon right"
@@ -68,7 +64,7 @@ const Login = () => {
       </CardContent>
       <CardMedia
         component="img"
-        sx={{ height: "auto", width: 200 }}
+        className="saloon-door"
         image={require("../images/saloon.png")}
         alt="Saloon door"
       />
@@ -79,8 +75,8 @@ const Login = () => {
           className="info-text"
           style={{ fontFamily: "Fredericka the Great" }}
         >
-          Hold up there Partner! <br></br>You must introduce yourself before you
-          can enter the Saloon!
+          Hold up there Partner! <br />
+          You must introduce yourself before you can enter the Saloon!
         </Typography>
         <Button
           className="google-button"

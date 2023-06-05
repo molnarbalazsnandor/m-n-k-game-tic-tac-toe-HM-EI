@@ -27,9 +27,13 @@ function App() {
                   size={size}
                   goal={goal}
                   player1Name={player1Name}
+                  setPlayer1Name={setPlayer1Name}
                   player2Name={player2Name}
+                  setPlayer2Name={setPlayer2Name}
                   player1Token={player1Token}
+                  setplayer1Token={setplayer1Token}
                   player2Token={player2Token}
+                  setplayer2Token={setplayer2Token}
                 />
               </Protected>
             }

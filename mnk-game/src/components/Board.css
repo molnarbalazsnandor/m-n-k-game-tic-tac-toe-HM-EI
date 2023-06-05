@@ -1,27 +1,10 @@
-@font-face {
-  font-family: "Reward Font";
-  src: url("../fonts/reward.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Fredericka the Great";
-  src: url("../fonts/fredericka.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Yellowtail";
-  src: url("../fonts/yellowtail.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Special Elite";
-  src: url("../fonts/SpecialElite.ttf") format("truetype");
-}
 .board-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 90vh;
-  background-color: #f3f3f3;
+  height: auto;
   font-family: "Fredericka the Great", sans-serif;
   background-image: url("../images/sepia.jpg");
   background-size: cover;
@@ -51,42 +34,117 @@
   bottom: 5px;
   right: 5px;
 }
-.board-card .status {
-  font-size: 32px;
-  text-align: center;
-  z-index: 3 !important;
-  position: absolute;
-  top: 15px;
-}
-.board-card .status .board-status {
-  font-family: "Fredericka the Great";
-  font-weight: bold;
-  font-size: 30px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-.board-card .status .red-ribbon {
-  height: auto;
-  width: 60%;
-  position: absolute;
-  top: 35px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-}
 .board-card .board {
+  display: grid;
+  border: 0;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  margin: 5%;
+  padding: 20px 5px 5px 20px;
+  position: relative;
+  z-index: 1;
+}
+.board-card .board::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
   background-image: url("../images/casino-table-cloth-texture.jpg");
   background-size: cover;
-  border: 0;
+  z-index: 0;
+  border-radius: 10px;
 }
-.board-card .buttons {
+.board-card .board::after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  background-image: url("../images/wooden-background.jpg");
+  background-size: cover;
+  z-index: -10;
+  border-radius: 10px;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.board-card .game-properties {
   display: flex;
+  flex-direction: column;
+  width: auto;
+  max-width: 50%;
+  padding-right: 5vw;
+}
+.board-card .game-properties .status-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: center;
+  height: auto;
+  min-height: 10vh;
+  width: 100%;
+  min-width: 200px;
+  margin-top: 20px;
+}
+.board-card .game-properties .status-header .board-status {
+  font-family: "Fredericka the Great";
+  font-weight: bold;
+  font-size: 2vw;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  padding: 10% 2% 8% 2%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.board-card .game-properties .status-header .board-status.winner {
+  animation: pulsate 3s ease-in-out infinite;
+}
+@keyframes pulsate {
+  0% {
+    color: #3f201a;
+    text-shadow: 0 0 0 #3f201a;
+  }
+  50% {
+    color: rgb(236, 236, 55);
+    text-shadow: 0 0 10px rgb(236, 236, 55);
+  }
+  100% {
+    color: #3f201a;
+    text-shadow: 0 0 0 #3f201a;
+  }
+}
+.board-card .game-properties .status-header .status-token {
+  width: 2.5vw;
+  height: 2.5vw;
+  z-index: 1;
+}
+.board-card .game-properties .status-header .red-ribbon {
+  height: auto;
+  width: 45%;
+  z-index: 0;
+  position: absolute;
+}
+.board-card .game-properties .buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
   border: none;
 }
-.board-card .buttons .button {
-  margin: 0 10px;
+.board-card .game-properties .buttons .decorative-line-two {
+  width: 60%;
+  min-width: 200px;
+}
+.board-card .game-properties .buttons .decorative-line-two.bottom {
+  transform: scaleY(-1);
+}
+.board-card .game-properties .buttons .button {
+  margin: 10px 10px;
   font-size: 20px;
   background-color: #715c4a;
   background-image: url("../images/wood-board.png");
@@ -95,42 +153,26 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 8px 16px;
   transition: background-color 0.3s ease;
-  min-width: 140px !important;
+  min-width: 200px;
+  max-width: 20vw;
   max-height: 45px;
 }
-.board-card .buttons .button:hover {
+.board-card .game-properties .buttons .button:hover {
   background-color: #2e1a10;
 }
-.board-card .buttons .button:disabled {
+.board-card .game-properties .buttons .button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transition: opacity 0.3s ease, cursor 0.3s ease;
 }
 
-/* @media screen and (max-width: 768px) {
-  .board-container {
-    padding: 10px;
-  }
-
-  .board {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    grid-gap: 5px;
-  }
-
-  .buttons {
-    button {
-      font-size: 16px;
-      padding: 6px 12px;
-    }
-  }
-} */
 .grid-item {
   font-weight: bold;
   cursor: pointer;
   position: relative;
   transition: background-color 0.3s ease;
-  height: 30px;
-  width: 30px;
+  height: 2.5vw;
+  width: 2.5vw;
   border: 1px solid transparent;
   -o-border-image: url("../images/chalk.jpg") 10 round;
      border-image: url("../images/chalk.jpg") 10 round;
@@ -140,8 +182,8 @@
 }
 
 .square-token {
-  width: 30px;
-  height: 30px;
+  width: 2vw;
+  height: 2vw;
   position: absolute;
   top: 50%;
   left: 50%;

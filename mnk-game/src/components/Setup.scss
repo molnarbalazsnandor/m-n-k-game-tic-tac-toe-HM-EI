@@ -27,8 +27,8 @@
   justify-content: center;
   height: auto;
   max-height: 95vh;
-  max-width: 600px;
-  min-width: 400px;
+  max-width: 40vw;
+  min-width: 450px;
   position: relative;
   background-image: url("../images/sepia.jpg");
   background-size: cover;
@@ -65,29 +65,40 @@
 
   .setup-card-header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     height: auto;
     width: 100%;
     position: relative;
+    margin-top: 2vh;
+
 
     .setup-text {
       font-family: "Reward Font" !important;
-      font-size: 32px;
+      font-size: 40px;
       text-align: center;
-      z-index: 3 !important;
-      position: absolute;
-      top: 15px;
+      z-index: 1;
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0vw 2vw 0vw 2vw;
+      color: #2c1814;
+    }
+
+    .setting {
+      width: 3vw;
+      height: 3vw;
+      z-index: 1;
+      padding-top: 0.5vw;
     }
 
     .red-ribbon {
       height: auto;
-      width: 60%;
+      width: 30vw;
+      min-width: 60%;
       position: absolute;
-      top: 35px;
-      left: 50%;
-      transform: translate(-50%, -50%);
       z-index: 0;
     }
 
@@ -101,30 +112,31 @@
     height: auto;
     width: 100%;
     position: relative;
-    height: 20vh;
-    min-height: 200px;
-    margin-top: 20px;
+    height: auto;
+    margin-top: 1vw;
 
 
     .user-picture {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-left: 40px;
+      margin-left: 5vw;
       position: relative;
-      margin-bottom: 1vh;
+      margin-bottom: 1vw;
 
       .google-avatar {
         position: absolute;
         top: 25%;
-        min-height: 7vh;
+        min-height: 6vh;
         width: auto;
+
         z-index: 2;
       }
 
       .wanted-icon {
-        min-height: 12vh;
-        width: 150px;
+        min-height: 10vh;
+        height: 13vh;
+        width: auto;
         z-index: 1;
       }
     }
@@ -142,12 +154,12 @@
         font-size: 20px;
         text-align: center;
         z-index: 3 !important;
-        margin: 10px;
+        margin: 1.5vw;
       }
 
       .sign-out-button {
         display: flex;
-        margin: 10px;
+        margin: 2vw;
       }
 
 
@@ -159,7 +171,9 @@
       text-align: center;
       z-index: 3 !important;
       position: absolute;
-      top: 80%;
+      top: 85%;
+      color: #1e1513;
+      ;
     }
 
   }
@@ -177,7 +191,7 @@
     height: auto;
     width: 100%;
     position: relative;
-    min-height: 20vh;
+    min-height: 40%;
 
     .board-size-label {
       font-family: "Fredericka the Great";
@@ -284,7 +298,9 @@
       }
     }
 
-
+    .start-button {
+      margin-bottom: 2vh
+    }
   }
 }
 
@@ -297,7 +313,7 @@ button {
   background-size: cover;
   background-position: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 8px 16px;
+  padding: 4vw 8vw;
   transition: background-color 0.3s ease !important;
 
   &:hover {
