@@ -58,10 +58,6 @@ const Board = ({
     setSquares(Array(size ** 2).fill(null));
     setMoveHistory([]);
     setXIsNext(true);
-    setPlayer1Name("Player 1");
-    setPlayer2Name("Player 2");
-    setplayer1Token("image1.png");
-    setplayer2Token("image2.png");
   }
 
   function handleStepBack() {
@@ -189,7 +185,13 @@ const Board = ({
           <Button
             variant="contained"
             className="button"
-            onClick={() => navigate("/setup")}
+            onClick={() => {
+              navigate("/setup");
+              setPlayer1Name("Player 1");
+              setPlayer2Name("Player 2");
+              setplayer1Token("image1.png");
+              setplayer2Token("image2.png");
+            }}
           >
             Go to setup
           </Button>
