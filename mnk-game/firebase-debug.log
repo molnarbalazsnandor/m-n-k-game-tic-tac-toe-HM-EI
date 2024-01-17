@@ -1,0 +1,21 @@
+[debug] [2024-01-17T15:24:15.346Z] ----------------------------------------------------------------------
+[debug] [2024-01-17T15:24:15.348Z] Command:       D:\Program Files\nodejs\node.exe C:\Users\molna\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-01-17T15:24:15.349Z] CLI Version:   13.0.3
+[debug] [2024-01-17T15:24:15.349Z] Platform:      win32
+[debug] [2024-01-17T15:24:15.349Z] Node Version:  v18.12.1
+[debug] [2024-01-17T15:24:15.350Z] Time:          Wed Jan 17 2024 16:24:15 GMT+0100 (közép-európai téli idő)
+[debug] [2024-01-17T15:24:15.351Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-17T15:24:15.359Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-17T15:24:15.360Z] > authorizing via signed-in user (molnarbalazsnandor@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  E:\Dokumentumok\Programozás\saját projektek\m-n-k-game-tic-tac-toe-HM-EI\mnk-game
+

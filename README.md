@@ -1,5 +1,3 @@
-A projekt a HM EI Zrt. Frontend fejlesztői pozíciójára való pályázatként készült.
-
 Az alkalmazás egy böngészőben futtatható amőba játék (angolul: m,n,k-game) két játékos számára, amely React-ben íródott.
 
 A React egy Javascript alapú könyvtár, így a JS nyelv ismerete után az elsajátítása egyszerű, mindemellett a komponensekre épülő struktúrája összetettebb felületek létrehozását is lehetővé teszi, a logikai átláthatóság és a props-okon keresztüli könnyű adattovábbítás mellett.
