@@ -36,7 +36,7 @@ function Setup({
       console.log(error);
     }
   };
-  <div></div>;
+
   return (
     <Card className="setup-card">
       <div className="nail nail-top-left"></div>

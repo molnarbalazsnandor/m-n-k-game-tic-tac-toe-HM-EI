@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "./Login.css";
-import { GoogleButton } from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import {
@@ -9,14 +8,10 @@ import {
   Card,
   CardContent,
   CardMedia,
-  CardActions,
-  CardHeader,
 } from "@mui/material/";
-import rewardFont from "../fonts/reward.ttf";
-import frederickaFont from "../fonts/fredericka.ttf";
 
 const Login = () => {
-  const { googleSignIn, logOut, user } = UserAuth();
+  const { googleSignIn, user } = UserAuth();
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {

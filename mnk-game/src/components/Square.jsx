@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Button, Grid } from "@mui/material/";
+import React from "react";
+import { Grid } from "@mui/material/";
 
 function Square({ value, onSquareClick }) {
   return (
@@ -7,7 +7,7 @@ function Square({ value, onSquareClick }) {
       {value && (
         <img
           src={require(`../images/tokens/${value}`)}
-          alt={`Image ${value}`}
+          alt={value}
           className="square-token"
         />
       )}

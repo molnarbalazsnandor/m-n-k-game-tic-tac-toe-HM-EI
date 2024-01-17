@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -7,8 +7,6 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 function SwiperComponent({ playerToken, setplayerToken, playerIndex }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
   const images = [
     "image1.png",
     "image2.png",
@@ -44,7 +42,7 @@ function SwiperComponent({ playerToken, setplayerToken, playerIndex }) {
           >
             <img
               src={require(`../images/tokens/${image}`)}
-              alt={`Image ${index + 1}`}
+              alt={index + 1}
               style={{ width: "50px" }}
             />
           </SwiperSlide>
